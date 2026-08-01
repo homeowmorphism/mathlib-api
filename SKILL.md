@@ -1,6 +1,6 @@
 ---
 name: mathlib-definition
-description: Evidence-driven workflow for designing a good Mathlib definition. Use when adding a new structure/def intended for mathlib, choosing between design alternatives (index type as field vs parameter, Set vs indexed family, data vs Prop, instance vs hypothesis, existential shape), justifying a design in PR review, or when asked to "check the precedents" for a definition or to build a field-vs-parameter-style example sheet — and also when the user asks a clarifying or follow-up question about a design explanation this skill produced. Excavates mathlib's own history (source survey, git archaeology, PR trail, Zulip), maps each design axis to its downstream consequences, and produces a compiling contrasting-cases example sheet in which every claim is demonstrated by a real goal, a real error, or a real historical diff — and every quote is source-pinned. Maintains a persistent, user-inspectable learner model (learner/) that updates on every clarifying question, so explanations adapt to the user and anticipate their questions over time.
+description: Evidence-driven workflow for designing a good Mathlib definition. Use when adding a new structure/def intended for mathlib, choosing between design alternatives (index type as field vs parameter, Set vs indexed family, data vs Prop, instance vs hypothesis, existential shape), justifying a design in PR review, or when asked to "check the precedents" for a definition or to build a field-vs-parameter-style example sheet. Excavates mathlib's own history (source survey, git archaeology, PR trail, Zulip), maps each design axis to its downstream consequences, and produces a compiling contrasting-cases example sheet in which every claim is demonstrated by a real goal, a real error, or a real historical diff — and every quote is source-pinned. Clarifying and follow-up questions about a design explanation are answered via the companion adaptive-teacher skill.
 ---
 
 # Designing a Mathlib definition
@@ -127,33 +127,19 @@ When writing the PR description or answering review:
 - Keep the PR minimal: one statement shape per PR, general lemmas upstreamed
   to their natural home file in a separate prerequisite PR, no riders.
 
-## The learner loop (always on, all phases)
+## Companion skill — clarifying questions (all phases)
 
-The skill teaches as it works, and it is required to get *better at teaching
-this user* across sessions. The full protocol, entry schemas, and the
-learning-science grounding are in `references/adaptive-teaching.md`; the loop
-itself:
-
-1. **At invocation, read `learner/model.md` first** — before Phase 0 (on a
-   fresh clone `learner/` is absent, since it is gitignored: create it from
-   the templates in the reference file). If the question log holds entries
-   newer than the model's `Consolidated through:` line, consolidate them
-   now — the catch-up path for sessions that ended without consolidating.
-   Then skip or compress what the model marks known-well, preempt its
-   anticipation rules in the dossier and example sheet, and if a retrieval
-   prompt is due, pose at most one, at a natural pause, skippably.
-2. **Every clarifying question is a diagnostic datum.** When the user asks
-   one (explicitly, or implicitly by re-asking or mis-paraphrasing): diagnose
-   the gap *before* answering, compose the answer per the eight-rule
-   answer-style protocol in `references/adaptive-teaching.md` (answer-first,
-   diagnosis out loud, refutation shape for false premises, calibrated to
-   the learner model), close interactively where natural — then, in the same
-   turn, append a verbatim entry to `learner/question-log.md`.
-3. **Consolidate before the session ends** (or every ~3 new entries): update
-   `learner/model.md` from the log; where an entry reveals a
-   *user-independent* defect in the skill's own text, fix the reference file
-   and commit, citing the log entry date in the commit message. The personal
-   `learner/` tier is gitignored and never committed.
+The adaptive-teaching layer that used to live here — the learner loop, the
+eight-rule answer-style protocol, and the persistent learner model — is now
+its own general-purpose skill, `adaptive-teacher` (a sibling under
+`.claude/skills/`). When the user asks a clarifying or follow-up question
+while this skill is active, invoke `adaptive-teacher`: it reads its
+`learner/model.md` first, composes the answer per its protocol, and logs
+the question. Two obligations flow back into this skill: compress in
+dossiers and example sheets whatever its learner model marks known-well,
+and when a logged question reveals a *user-independent* defect in this
+skill's reference text, fix the reference file here and commit, citing the
+log entry date.
 
 ## Hard rules (all phases)
 
