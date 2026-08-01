@@ -102,9 +102,10 @@ Follow `references/example-sheet.md`. One compiling `.lean` file that argues
 the design by contrasting cases: minimal structure twins differing in exactly
 one design choice and named with bold caps style labels used consistently
 throughout (e.g. **FIELD** vs **PARAM**), numbered tests each stating a
-meaningful proposition in plain English and subsectioned per style
-(`/-! ### **FIELD** -/` / escape hatches / `/-! ### **PARAM** -/`, so the
-outline shows the contrast), deliberate failures at labeled `EXPECTED ERROR`
+meaningful proposition in plain English and chunked per style by bold
+separator blocks (`/-! **FIELD** -/` / escape hatches / `/-! **PARAM** -/`;
+`###` headers stay reserved for unique titles so the outline remains useful
+navigation), deliberate failures at labeled `EXPECTED ERROR`
 examples with verbatim compiler text, escape hatches placed directly under
 the failure they rescue and labeled honestly, a reconstruction of the real
 pre-refactor API from pinned git history, and a references section mirroring

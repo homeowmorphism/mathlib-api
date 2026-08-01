@@ -28,14 +28,14 @@ instantiation of a replicated finding (full citations in §Bibliography):
   at least two independent historical refactors, never one.
 - **Bold style labels as visual signals — one signal per scope.** Give the
   contrasted styles short caps names, introduce them in the module doc, and
-  set them in bold where they carry structure: subsection headers
-  (`/-! ### **FIELD** -/`), the twin structures' docstrings (docstrings show
+  set them in bold where they carry structure: separator blocks
+  (`/-! **FIELD** -/`), the twin structures' docstrings (docstrings show
   on hover out of context, so they stay self-contained), and flowing prose
   that names a style mid-sentence. Cueing the relevant dimension reliably
   improves retention and transfer (signaling principle: Schneider et al.
   2018 meta-analysis) — but do NOT echo the label at the top of every
-  example under an already-labeled subsection: a repeated cue is noise, and
-  the subsection header already tells the reader which side of the contrast
+  example under an already-labeled separator: a repeated cue is noise, and
+  the separator already tells the reader which side of the contrast
   they are on. Never bold inside code, identifiers, or verbatim quotes.
 - **Vary one thing; hold everything else invariant.** A critical aspect is
   discernible only when it varies against an invariant background (variation
@@ -88,11 +88,13 @@ an education journal.
    hand-written cross-type lemma per projection per construction), and the
    one the winning style *doesn't need* (its job done by the typechecker;
    prove it by showing the example elaborates).
-3. **Numbered tests as questions, subsectioned by style.** Each test header
+3. **Numbered tests as questions, chunked by style.** Each test header
    is a question ("can `simp` see `Sum.elim` through `.val`?"); inside it,
-   `/-! ### **FIELD** -/` → `/-! ### **FIELD** escape hatches -/` (where any
-   exist) → `/-! ### **PARAM** -/` subsections, so the file outline itself
-   shows the contrast and a reader can jump between a failure and its twin.
+   bold separator blocks — `/-! **FIELD** -/` → `/-! **FIELD** escape
+   hatches -/` (where any exist) → `/-! **PARAM** -/` — chunk the material
+   by style. Plain bold, not `###`: a dozen identical "FIELD"/"PARAM"
+   outline entries would be useless as navigation, so reserve real `##`/`###`
+   headers for unique titles and let the separators work in the text itself.
    Each example carries its `Says:` line; each deliberate failure is labeled
    `EXPECTED ERROR: <verbatim compiler text>`.
 4. **Escape hatches, inline and honest.** Directly under each failure, the
