@@ -45,7 +45,7 @@ Use it (or let Claude pick it up from the skill description) when:
 | 0 — Name the consumers | For each candidate field, write down the downstream API that will consume it; every later decision asks what form the consumer demands. | [SKILL.md](SKILL.md) |
 | 1 — Precedent excavation | Survey live mathlib → git archaeology → PR trail → Zulip → direction-of-travel test → cost accounting of holdouts → adversarial verification of every claim. | [references/precedent-excavation.md](references/precedent-excavation.md) |
 | 2 — Decide each axis | Work the design-axes checklist (structure vs class, field vs parameter, family vs `Set`, data vs Prop, existential shape, finiteness form, naming, placement), recording the honest flip side of each choice; then stress-test via scratch simulation and dogfooding (the stress-test protocol is in SKILL.md). | [references/design-axes.md](references/design-axes.md) + [SKILL.md](SKILL.md) |
-| 3 — The example sheet | Build the contrasting-cases `.lean` file; the format is grounded in the learning-science literature (contrasting cases, variation theory, erroneous examples, self-explanation, expertise reversal). | [references/example-sheet.md](references/example-sheet.md) |
+| 3 — The example sheet | Build the contrasting-cases `.lean` file; the format is grounded in the learning-science literature (contrasting cases, variation theory, erroneous examples, self-explanation, expertise reversal), with the grounding and bibliography split into an on-demand evidence file. | [references/example-sheet.md](references/example-sheet.md) + [references/example-sheet-evidence.md](references/example-sheet-evidence.md) |
 | 4 — PR justification | Citation order (same-subject-area precedent first, cross-area refactors, Zulip authority, performance numbers), example sheet linked as runnable evidence, minimal-PR discipline. | [SKILL.md](SKILL.md) |
 
 House rules, all phases: every quote is source-pinned and quoted *exactly*;
@@ -55,6 +55,10 @@ example sheet compiles with exactly the intended deliberate errors and zero
 warnings.
 
 ## Repository layout
+
+Each reference file is loaded when its phase begins, not up front; the
+evidence file behind the example-sheet format loads only if the format
+itself is questioned or amended.
 
 ```
 SKILL.md                      entry point: phases, outputs, hard rules
@@ -66,9 +70,10 @@ references/
   design-axes.md              the per-axis checklist, each with the rule, the
                               consumer-driven argument, the precedent, and
                               the honest flip side
-  example-sheet.md            the example-sheet recipe, compile and citation
-                              contracts, and the learning-science
-                              bibliography behind the format
+  example-sheet.md            the example-sheet recipe and the compile and
+                              citation contracts
+  example-sheet-evidence.md   on-demand: the learning-science grounding and
+                              verified bibliography behind the sheet format
 ```
 
 ## Companion skill
