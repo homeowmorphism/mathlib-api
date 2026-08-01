@@ -20,10 +20,15 @@ is questioned or amended, not to build a sheet.
 1. **Distill minimal twins.** Strip the real structures to the fields that
    participate in the phenomenon (two fields sufficed for
    `GensF`/`GensP`; `σ'` and the algebra bookkeeping were elided *and the
-   elision stated*). Both twins defined adjacently, each with a docstring
-   opening with its style's caps label (`FIELD:` / `PARAM:` — plain, since
-   bold is reserved for the separators), because hover shows docstrings out
-   of context.
+   elision stated*). Name each twin with a pronounceable suffix
+   abbreviating its style (`GensClos`/`GensLift`), never a bare initial
+   (`GensC`/`GensL`): single-letter suffixes are hard to keep apart while
+   reading (user feedback, question-log 2026-08-02). Helper defs follow
+   suit (`toClos`/`toLift`, not `toC`/`toL`). The exemplar's
+   `GensF`/`GensP` predates this rule. Both twins defined adjacently, each
+   with a docstring opening with its style's caps label (`FIELD:` /
+   `PARAM:` — plain, since bold is reserved for the separators), because
+   hover shows docstrings out of context.
 2. **One shared construction** whose index type is interesting (`union` with
    `⊕`, mirroring the real `Algebra.Generators.comp`). In the losing style
    the interesting type sits in the *body*; in the winning style, in the
