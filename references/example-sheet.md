@@ -1,8 +1,9 @@
 # The example sheet — recipe and contracts
 
 The dossier's argument, compiled. One `.lean` file a reader can open in the
-IDE and *watch* the designs succeed and fail. Exemplar:
-`scratch_field_vs_parameter.lean` (575 lines, `Group.Presentation` project
+IDE and *watch* the designs succeed and fail, plus a companion markdown
+references file. Exemplar: `scratch_field_vs_parameter.lean` with its
+dossier `scratch_field_vs_parameter_refs.md` (`Group.Presentation` project
 root); a second, smaller instance of the genre is
 `Mathlib/RingTheory/Extension/scratch.lean` there (checked `Option ℕ` vs
 truncated `ℕ` subtraction — junk values made visible with paired `#eval`s).
@@ -71,10 +72,16 @@ is questioned or amended, not to build a sheet.
    deleted workaround lines from the refactor's diff, per file.
 8. **The live re-run.** The same tests against the current post-refactor
    mathlib API and against your new definition, succeeding.
-9. **References section** at the end, one doc-comment, organized to mirror
-   the argument (refactor trail → winning-style structures → existential
-   layer → holdouts with their costs → related predicates), every entry with
-   `path:line`, commit hash, PR URL; quotes verbatim and pre-verified.
+9. **References dossier as a companion `.md` file** (`<sheet>_refs.md`, same
+   directory), not a doc-comment in the sheet: inside `/-! -/` a citation
+   database gets no rendering — no clickable links, no headers — and as
+   markdown it distills directly into the PR description. Organized to
+   mirror the argument (refactor trail → winning-style structures →
+   existential layer → holdouts with their costs → related predicates),
+   every entry with `path:line`, commit hash, PR URL; quotes verbatim and
+   pre-verified. The sheet ends with a short `/-! ## References -/` section
+   pointing at the file and saying why it is markdown; the `.md` opens by
+   pointing back at the sheet.
 
 ## Contracts
 
@@ -96,7 +103,19 @@ is questioned or amended, not to build a sheet.
   `/-! -/`; docstrings `/-- -/` on the two structure twins and any `def`s
   (Lean forbids docstrings on anonymous `example`s — put their `Says:` lines
   in a preceding block comment). Never `--`.
-- **Readability pass**: after the content is complete, do a dedicated
-  simplification pass (the exemplar went 314 → 231 lines on the instruction
-  "it's an overwhelming wall of text"); section headers become questions;
-  verify the diagnostic set is unchanged afterwards.
+- **Readability pass**: after the content is complete, do a dedicated prose
+  pass, then verify the diagnostic set is unchanged. The exemplar needed
+  two: a structural cut (314 → 231 lines, on "it's an overwhelming wall of
+  text") and a later sentence-level rewrite (on "so LLM-y that they are
+  overwhelming to read"). Section headers become questions. Sentence rules,
+  grounded in `example-sheet-evidence.md` §Prose readability:
+  - One idea per sentence; keep sentences short (Flesch).
+  - No mid-sentence interruptions. Em-dash asides and nested parentheticals
+    force the reader to hold a suspended clause open (Gibson); write a
+    second sentence instead.
+  - Active voice; verbs over nominalizations (Gough; Coleman).
+  - Open each sentence from given information, then add the new (Haviland &
+    Clark). No inverted openings ("Nor was X a one-off").
+  - No decorative italics in running prose. Emphasis works by selectivity
+    (Schneider et al.), and flourishes are seductive details (Rey). The
+    caps labels and the bold separators are the only sanctioned cues.

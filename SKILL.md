@@ -27,7 +27,9 @@ design project, 2026-07; exemplar artifact:
    consume it ("the verb decides the container").
 3. **An example sheet** — one compiling contrasting-cases `.lean` file in
    which the reader *watches* each rejected design fail and each chosen
-   design succeed.
+   design succeed, plus a companion `<sheet>_refs.md` holding the references
+   dossier (markdown so links render and it distills into the PR
+   description).
 
 ## Phase 0 — Name the consumers
 
@@ -78,8 +80,8 @@ is questioned or amended). In one line: minimal structure twins differing
 in exactly one design choice, numbered tests chunked per caps-labeled
 style, deliberate failures at labeled `EXPECTED ERROR` examples with
 verbatim compiler text, escape hatches priced honestly, the real
-pre-refactor API reconstructed from pinned git history, and a references
-section mirroring the argument.
+pre-refactor API reconstructed from pinned git history, and the references
+dossier split out as a companion `.md` file mirroring the argument.
 
 ## Phase 4 — The PR justification
 
