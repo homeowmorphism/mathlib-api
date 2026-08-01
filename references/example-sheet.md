@@ -26,14 +26,17 @@ instantiation of a replicated finding (full citations in §Bibliography):
   analog rarely transfers, two with comparison do). Hence: each **FIELD**
   example is immediately followed by its **PARAM** twin, and the sheet cites
   at least two independent historical refactors, never one.
-- **Bold style labels as visual signals.** Give the contrasted styles short
-  caps names and set them in bold everywhere prose names a style
-  (`**FIELD**:` / `**PARAM**:` opening each example). Cueing the relevant
-  dimension of the material reliably improves retention and transfer
-  (signaling principle: Schneider et al. 2018 meta-analysis) — and in a long
-  sheet the bold tags let a reader always know which side of the contrast
-  they are on, even mid-scroll. Never bold inside code, identifiers, or
-  verbatim quoted material.
+- **Bold style labels as visual signals — one signal per scope.** Give the
+  contrasted styles short caps names, introduce them in the module doc, and
+  set them in bold where they carry structure: subsection headers
+  (`/-! ### **FIELD** -/`), the twin structures' docstrings (docstrings show
+  on hover out of context, so they stay self-contained), and flowing prose
+  that names a style mid-sentence. Cueing the relevant dimension reliably
+  improves retention and transfer (signaling principle: Schneider et al.
+  2018 meta-analysis) — but do NOT echo the label at the top of every
+  example under an already-labeled subsection: a repeated cue is noise, and
+  the subsection header already tells the reader which side of the contrast
+  they are on. Never bold inside code, identifiers, or verbatim quotes.
 - **Vary one thing; hold everything else invariant.** A critical aspect is
   discernible only when it varies against an invariant background (variation
   theory: Marton & Pang 2006). Hence: `GensF`/`GensP` differ in *exactly* one
@@ -74,8 +77,9 @@ an education journal.
    participate in the phenomenon (two fields sufficed for
    `GensF`/`GensP`; `σ'` and the algebra bookkeeping were elided *and the
    elision stated*). Both twins defined adjacently, each with a docstring
-   naming the style it represents — in the bold caps label form
-   (`**FIELD**:` / `**PARAM**:`) used consistently through the whole sheet.
+   naming its style in the bold caps label form (`**FIELD**:` /
+   `**PARAM**:`) — the docstring is the one place the label is repeated,
+   because hover shows it out of context.
 2. **One shared construction** whose index type is interesting (`union` with
    `⊕`, mirroring the real `Algebra.Generators.comp`). In the losing style
    the interesting type sits in the *body*; in the winning style, in the
