@@ -144,9 +144,11 @@ itself:
    prompt is due, pose at most one, at a natural pause, skippably.
 2. **Every clarifying question is a diagnostic datum.** When the user asks
    one (explicitly, or implicitly by re-asking or mis-paraphrasing): diagnose
-   the gap *before* answering, pitch the answer to the diagnosis, close
-   interactively where natural — then, in the same turn, append a verbatim
-   entry to `learner/question-log.md`.
+   the gap *before* answering, compose the answer per the eight-rule
+   answer-style protocol in `references/adaptive-teaching.md` (answer-first,
+   diagnosis out loud, refutation shape for false premises, calibrated to
+   the learner model), close interactively where natural — then, in the same
+   turn, append a verbatim entry to `learner/question-log.md`.
 3. **Consolidate before the session ends** (or every ~3 new entries): update
    `learner/model.md` from the log; where an entry reveals a
    *user-independent* defect in the skill's own text, fix the reference file
