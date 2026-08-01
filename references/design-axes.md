@@ -18,11 +18,14 @@ split: data → `FreeGroupBasis ι G`, class → Prop `IsFreeGroup`.
 ## 2. Index type: parameter, not field
 
 The headline axis. The index type of the family goes in the structure's
-*type* (`Group.Generators G α`), never as a `Type`-valued field.
+*type* (`Group.Generators G α`), never as a `Type`-valued field. The example
+sheet names the two styles in bold caps throughout — **FIELD** (index type
+stored as a field) vs **PARAM** (index type as a parameter) — and this file
+uses the same labels.
 
 **Mechanism** (all demonstrated live in `scratch_field_vs_parameter.lean`):
 `rw`, `simp`, and instance search match *syntax* at reducible transparency. A
-field-style construction (`(P.union Q).ι`, `(Q.comp P).vars`) is
+**FIELD**-style construction (`(P.union Q).ι`, `(Q.comp P).vars`) is
 definitionally a `⊕` but never syntactically, so:
 
 - `rw [Sum.forall]` finds no `⊕` pattern; the repair rewrite dies with
@@ -33,15 +36,15 @@ definitionally a `⊕` but never syntactically, so:
 - propositional rewriting `rw [h]` with `h : R = P.union Q` is ill-typed for
   the same motive reason (Test 3);
 - two families' `val`s cannot even be *compared* without `cast`/`HEq`
-  (Test 4; compare the auto-generated `mk.injEq`: `HEq` for field-style,
-  honest `=` for parameter-style);
+  (Test 4; compare the auto-generated `mk.injEq`: `HEq` for **FIELD**,
+  honest `=` for **PARAM**);
 - `Finite (P.union Q).ι` is not found by instance search though both halves
   are in scope (Test 5);
 - the structure jumps a universe (`Type → Type 1`) — what `@[nolint
   checkUnivs]` suppressed on old `Algebra.Presentation` and `Module.Relations`
   still suppresses.
 
-**Precedent**: three field→parameter refactors, never the reverse (#7698,
+**Precedent**: three **FIELD**→**PARAM** refactors, never the reverse (#7698,
 #25085, #37928; details and quotes in `precedent-excavation.md` §5); the
 "Bundled basis" Zulip thread (Carneiro, Wieser, Kudryashov, 2021); the TODO at
 `Mathlib/RingTheory/Extension/Generators.lean:41-48` reads as a field report
@@ -54,7 +57,7 @@ quantify over; pay one `Finite.exists_equiv_fin` shuffle for the
 ext-lemmas apply without guessing the index (J. Breitner, Zulip "universe
 levels for is_free_group", 2022-04-19: with unbundled generators "the
 ext-lemma doesn't apply automatically … the lemma search wouldn't know which
-`X`s to use"). Neither cost recurs per-proof; the field-style costs do.
+`X`s to use"). Neither cost recurs per-proof; the **FIELD**-style costs do.
 
 ## 3. Which Prop witnesses the defining property
 

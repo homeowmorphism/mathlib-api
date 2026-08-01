@@ -23,9 +23,17 @@ instantiation of a replicated finding (full citations in §Bibliography):
 - **Side-by-side pairs, not sequential sections.** Explicitly comparing two
   cases induces a transferable schema; studying the same cases separately
   does not (Gentner, Loewenstein & Thompson 2003; Gick & Holyoak 1983 — one
-  analog rarely transfers, two with comparison do). Hence: each FIELD example
-  is immediately followed by its PARAM twin, and the sheet cites at least two
-  independent historical refactors, never one.
+  analog rarely transfers, two with comparison do). Hence: each **FIELD**
+  example is immediately followed by its **PARAM** twin, and the sheet cites
+  at least two independent historical refactors, never one.
+- **Bold style labels as visual signals.** Give the contrasted styles short
+  caps names and set them in bold everywhere prose names a style
+  (`**FIELD**:` / `**PARAM**:` opening each example). Cueing the relevant
+  dimension of the material reliably improves retention and transfer
+  (signaling principle: Schneider et al. 2018 meta-analysis) — and in a long
+  sheet the bold tags let a reader always know which side of the contrast
+  they are on, even mid-scroll. Never bold inside code, identifiers, or
+  verbatim quoted material.
 - **Vary one thing; hold everything else invariant.** A critical aspect is
   discernible only when it varies against an invariant background (variation
   theory: Marton & Pang 2006). Hence: `GensF`/`GensP` differ in *exactly* one
@@ -66,7 +74,8 @@ an education journal.
    participate in the phenomenon (two fields sufficed for
    `GensF`/`GensP`; `σ'` and the algebra bookkeeping were elided *and the
    elision stated*). Both twins defined adjacently, each with a docstring
-   naming the style it represents.
+   naming the style it represents — in the bold caps label form
+   (`**FIELD**:` / `**PARAM**:`) used consistently through the whole sheet.
 2. **One shared construction** whose index type is interesting (`union` with
    `⊕`, mirroring the real `Algebra.Generators.comp`). In the losing style
    the interesting type sits in the *body*; in the winning style, in the
@@ -75,9 +84,12 @@ an education journal.
    hand-written cross-type lemma per projection per construction), and the
    one the winning style *doesn't need* (its job done by the typechecker;
    prove it by showing the example elaborates).
-3. **Numbered tests as questions.** Each test header is a question ("can
-   `simp` see `Sum.elim` through `.val`?"); each example carries its `Says:`
-   line; each deliberate failure is labeled
+3. **Numbered tests as questions, subsectioned by style.** Each test header
+   is a question ("can `simp` see `Sum.elim` through `.val`?"); inside it,
+   `/-! ### **FIELD** -/` → `/-! ### **FIELD** escape hatches -/` (where any
+   exist) → `/-! ### **PARAM** -/` subsections, so the file outline itself
+   shows the contrast and a reader can jump between a failure and its twin.
+   Each example carries its `Says:` line; each deliberate failure is labeled
    `EXPECTED ERROR: <verbatim compiler text>`.
 4. **Escape hatches, inline and honest.** Directly under each failure, the
    ways around it — each labeled with its price ("every fix hard-codes the
@@ -177,6 +189,10 @@ an education journal.
   example-based learning. *Cognitive Science*, 38(1), 1–37.
   doi:10.1111/cogs.12086. Examples work in early skill acquisition and only
   with active self-explanation; fade worked steps as expertise grows.
+- Schneider, S., Beege, M., Nebel, S., & Rey, G. D. (2018). A meta-analysis
+  of how signaling affects learning with media. *Educational Research
+  Review*, 23, 1–24. doi:10.1016/j.edurev.2017.11.001. Cueing the relevant
+  material or its organization reliably improves retention and transfer.
 - Adams, D. M., McLaren, B. M., Durkin, K., Mayer, R. E., Rittle-Johnson,
   B., Isotani, S., & van Velsen, M. (2014). Using erroneous examples to
   improve mathematics learning with a web-based tutoring system. *Computers

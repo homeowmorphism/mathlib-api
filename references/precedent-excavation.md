@@ -23,13 +23,13 @@ precedent into one of four buckets:
 
 1. **Never-bundled predicate** (`AlgebraicIndependent`, `Orthonormal`) — the
    pre-2021 style, still the norm in some niches.
-2. **Bundled data over a parameter index** (`Module.Basis ι R M`,
-   `AffineBasis`, `FreeGroupBasis ι G`, post-#25085 `Algebra.Generators R S ι`,
-   `CoxeterSystem M W`) — the modern default.
-3. **Fully bundled** (index type as a field: `Module.Relations`,
-   `SheafOfModules.GeneratingSections`, `PowerBasis` with its `dim : ℕ`,
-   `IsFreeGroupoid`) — the holdouts; for each, record the price it pays
-   (see §6).
+2. **Bundled data over a parameter index** — the **PARAM** style
+   (`Module.Basis ι R M`, `AffineBasis`, `FreeGroupBasis ι G`, post-#25085
+   `Algebra.Generators R S ι`, `CoxeterSystem M W`) — the modern default.
+3. **Fully bundled** — the **FIELD** style (index type as a field:
+   `Module.Relations`, `SheafOfModules.GeneratingSections`, `PowerBasis` with
+   its `dim : ℕ`, `IsFreeGroupoid`) — the holdouts; for each, record the
+   price it pays (see §6).
 4. **Existential Prop layer over bucket 2** (`Module.Free`, `IsFreeGroup`,
    `IsCoxeterGroup`, `Algebra.FinitePresentation`) — universe-pinned
    `∃ ι : Type u` or `Fin n`-normalized.
@@ -141,7 +141,7 @@ one way:
 - `Computability.Encoding` `Γ` field → parameter; `FinEncoding` deleted for
   `[Fintype Γ]` — mathlib4 #37928 (2026-06-30, commit `ca158545413`).
 
-Three field→parameter unbundlings, zero in the reverse direction. Then look
+Three **FIELD**→**PARAM** unbundlings, zero in the reverse direction. Then look
 for the reverse experiment that *was* tried: #25191 attempted to unbundle the
 carrier `Extension.Ring` and failed on benchmarks — which sharpens the rule to
 "unbundle **index** types; keep **carrier** types bundled." The boundary of a

@@ -100,11 +100,15 @@ Then stress-test before committing:
 
 Follow `references/example-sheet.md`. One compiling `.lean` file that argues
 the design by contrasting cases: minimal structure twins differing in exactly
-one design choice, numbered tests each stating a meaningful proposition in
-plain English, deliberate failures at labeled `EXPECTED ERROR` examples with
-verbatim compiler text, escape hatches placed directly under the failure they
-rescue and labeled honestly, a reconstruction of the real pre-refactor API
-from pinned git history, and a references section mirroring the argument.
+one design choice and named with bold caps style labels used consistently
+throughout (e.g. **FIELD** vs **PARAM**), numbered tests each stating a
+meaningful proposition in plain English and subsectioned per style
+(`/-! ### **FIELD** -/` / escape hatches / `/-! ### **PARAM** -/`, so the
+outline shows the contrast), deliberate failures at labeled `EXPECTED ERROR`
+examples with verbatim compiler text, escape hatches placed directly under
+the failure they rescue and labeled honestly, a reconstruction of the real
+pre-refactor API from pinned git history, and a references section mirroring
+the argument.
 The format is grounded in the learning-science literature (contrasting cases,
 analogical encoding, variation theory, erroneous examples, self-explanation,
 expertise reversal) — citations and the mapping are in the reference file.
