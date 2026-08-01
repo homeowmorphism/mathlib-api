@@ -59,6 +59,14 @@ are free-form with one exception: when the diagnosis is a defect in the
 skill's own text, the tag is the verbatim string `skill-text defect` —
 consolidation greps for exactly that string to route the committed fix.
 
+Brevity contract (user cost feedback, 2026-08-01): an entry targets ≤6
+lines — the verbatim question, a one-line diagnosis, a one-line
+what-worked, and an anticipation clause only when it changes future
+behavior. Log only questions that teach the model something. The whole loop
+is file appends plus one small read per session — never agents, web
+searches, or verification passes; those are reserved for building or
+amending §Bibliography, a one-time cost already paid.
+
 ### `learner/model.md` — consolidated, read first
 
 Read at every invocation, before Phase 0. Five sections, each with its own
