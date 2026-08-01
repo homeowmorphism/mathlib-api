@@ -47,6 +47,7 @@ Use it (or let Claude pick it up from the skill description) when:
 | 2 — Decide each axis | Work the design-axes checklist (structure vs class, field vs parameter, family vs `Set`, data vs Prop, existential shape, finiteness form, naming, placement), recording the honest flip side of each choice; then stress-test via scratch simulation and dogfooding (the stress-test protocol is in SKILL.md). | [references/design-axes.md](references/design-axes.md) + [SKILL.md](SKILL.md) |
 | 3 — The example sheet | Build the contrasting-cases `.lean` file; the format is grounded in the learning-science literature (contrasting cases, variation theory, erroneous examples, self-explanation, expertise reversal). | [references/example-sheet.md](references/example-sheet.md) |
 | 4 — PR justification | Citation order (same-subject-area precedent first, cross-area refactors, Zulip authority, performance numbers), example sheet linked as runnable evidence, minimal-PR discipline. | [SKILL.md](SKILL.md) |
+| always on — the learner loop | Every clarifying question the user asks is answered contingently, logged verbatim with a diagnosis of the gap it revealed, and consolidated into a persistent learner model that future sessions read first — so explanations adapt and anticipate over time. | [references/adaptive-teaching.md](references/adaptive-teaching.md) |
 
 House rules, all phases: every quote is source-pinned and quoted *exactly*;
 truth is the floor, not a slider (a technically-true-but-misleading form is
@@ -69,7 +70,22 @@ references/
   example-sheet.md            the example-sheet recipe, compile and citation
                               contracts, and the learning-science
                               bibliography behind the format
+  adaptive-teaching.md        the learner loop: how clarifying questions
+                              update a persistent learner model, with its
+                              own verified bibliography (contingent
+                              scaffolding, question-asking as diagnosis,
+                              retrieval and spacing, LLM-tutor evidence)
+learner/                      personal, gitignored: the verbatim question
+                              log and the consolidated learner model the
+                              loop maintains for this installation's user
 ```
+
+The `learner/` tier is deliberately split from the tracked files: what the
+skill learns *about you* (your question history, what you already know, which
+explanation styles land) stays local and private; what your questions reveal
+about the skill's own text (a missing prerequisite, an explanation anyone
+would stumble on) gets fixed in `references/` and committed, so the skill
+itself improves too.
 
 ## Installation
 
