@@ -107,15 +107,9 @@ is questioned or amended, not to build a sheet.
   pass, then verify the diagnostic set is unchanged. The exemplar needed
   two: a structural cut (314 → 231 lines, on "it's an overwhelming wall of
   text") and a later sentence-level rewrite (on "so LLM-y that they are
-  overwhelming to read"). Section headers become questions. Sentence rules,
-  grounded in `example-sheet-evidence.md` §Prose readability:
-  - One idea per sentence; keep sentences short (Flesch).
-  - No mid-sentence interruptions. Em-dash asides and nested parentheticals
-    force the reader to hold a suspended clause open (Gibson); write a
-    second sentence instead.
-  - Active voice; verbs over nominalizations (Gough; Coleman).
-  - Open each sentence from given information, then add the new (Haviland &
-    Clark). No inverted openings ("Nor was X a one-off").
-  - No decorative italics in running prose. Emphasis works by selectivity
-    (Schneider et al.), and flourishes are seductive details (Rey). The
-    caps labels and the bold separators are the only sanctioned cues.
+  overwhelming to read"). Section headers become questions. For the
+  sentences, apply the `human-prose` skill (one idea per sentence; no
+  mid-sentence asides; active voice; given before new; no decorative
+  emphasis). That skill is the canonical home of the rule set and its
+  evidence; on this sheet, the caps labels and the bold separators are
+  the only sanctioned emphasis cues.

@@ -68,26 +68,12 @@ an education journal.
 
 ## Prose readability (sentence level)
 
-The rules above govern the sheet's structure; these govern the sentences
-inside its comment blocks. Added 2026-08-01, after user feedback that the
-prose was "so LLM-y that they are overwhelming to read".
-
-- **Short sentences, one idea each.** Comprehension falls as sentence
-  length rises; sentence length is one of the two variables in the
-  classical readability formulas (Flesch 1948).
-- **No mid-sentence interruptions.** An em-dash aside or a nested
-  parenthetical is a center-embedded constituent: the reader holds the
-  suspended clause in working memory for the length of the intrusion
-  (Gibson 1998). Prefer a second sentence.
-- **Active voice; verbs over nominalizations.** Passives take longer to
-  verify than actives (Gough 1965); prose rewritten from nominalizations
-  into active verbs is more comprehensible (Coleman 1964).
-- **Given before new.** Sentences integrate faster when they open from
-  already-established material (Haviland & Clark 1974). This also rules
-  out inverted openings ("Nor was X a one-off").
-- **No decorative emphasis.** Signaling works by selectivity (Schneider et
-  al. 2018, above), and interesting-but-irrelevant flourishes measurably
-  hurt learning (the seductive-detail effect: Rey 2012).
+The rules above govern the sheet's structure. The sentence-level rules
+were added here 2026-08-01, after user feedback that the prose was "so
+LLM-y that they are overwhelming to read", and moved the same day to
+the standalone `human-prose` skill so any skill can apply them. That
+skill is now the canonical home of the rules and their bibliography;
+the readability pass in `example-sheet.md` points there.
 
 ## Bibliography (verified 2026-07-31; one-line findings faithful to the papers)
 
@@ -142,30 +128,6 @@ prose was "so LLM-y that they are overwhelming to read".
   Finding-and-fixing errors beat isomorphic supported practice on delayed
   tests.
 
-### §Prose readability entries
-
-Added 2026-08-01. Coleman 1964 and Rey 2012 were verified against
-publisher/index records that day; Flesch, Gough, Gibson, and Haviland &
-Clark are cited from standard bibliographic knowledge — re-verify before
-quoting externally.
-
-- Flesch, R. (1948). A new readability yardstick. *Journal of Applied
-  Psychology*, 32(3), 221–233. Reading ease as a function of sentence
-  length and word length.
-- Coleman, E. B. (1964). The comprehensibility of several grammatical
-  transformations. *Journal of Applied Psychology*, 48(3), 186–190. Four
-  experiments; active-verb transforms beat nominalizations and passives.
-- Gough, P. B. (1965). Grammatical transformations and speed of
-  understanding. *Journal of Verbal Learning and Verbal Behavior*, 4(2),
-  107–111. Passives and negatives take longer to verify than actives.
-- Haviland, S. E., & Clark, H. H. (1974). What's new? Acquiring new
-  information as a process in comprehension. *Journal of Verbal Learning
-  and Verbal Behavior*, 13(5), 512–521. Sentences are understood faster
-  when given information precedes new.
-- Gibson, E. (1998). Linguistic complexity: Locality of syntactic
-  dependencies. *Cognition*, 68(1), 1–76. Processing cost grows with the
-  distance over which an incomplete dependency is held open.
-- Rey, G. D. (2012). A review of research and a meta-analysis of the
-  seductive detail effect. *Educational Research Review*, 7(3), 216–237.
-  doi:10.1016/j.edurev.2012.05.003. Interesting but irrelevant additions
-  reliably reduce retention and transfer.
+The sentence-level prose bibliography (Flesch 1948; Coleman 1964; Gough
+1965; Haviland & Clark 1974; Gibson 1998; Rey 2012) lives with its rules
+in the `human-prose` skill, `references/evidence.md`.
