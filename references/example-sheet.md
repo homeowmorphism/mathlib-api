@@ -1,8 +1,9 @@
 # The example sheet — recipe and contracts
 
 The dossier's argument, compiled. One self-contained `.lean` file a reader
-can open in the IDE and *watch* the designs succeed and fail, ending with
-the references dossier as a `/-! ## References -/` section. Exemplar:
+can open in the IDE and *watch* the designs succeed and fail, opening with
+the real-Mathlib Context section and ending with the references dossier as
+a `/-! ## References -/` section. Exemplar:
 `scratch_field_vs_parameter.lean` (`Group.Presentation` project root); a
 second, smaller instance of the genre is
 `Mathlib/RingTheory/Extension/scratch.lean` there (checked `Option ℕ` vs
@@ -14,13 +15,31 @@ historical reconstruction, local `path:line` pins only — specified in
 Every element of the format instantiates a replicated learning-science
 finding (contrasting cases, analogical encoding, variation theory,
 erroneous examples, self-explanation, signaling, expertise reversal,
-productive failure). The mapping and the verified bibliography are in
+productive failure), with one recorded exception: the Context section
+sits first by user decision, not by the literature. The mapping, the
+verified bibliography, and that override note are in
 `example-sheet-evidence.md` — load that file only when the format itself
 is questioned or amended, not to build a sheet.
 
 ## The recipe
 
-1. **Distill minimal twins.** Strip the real structures to the fields that
+1. **The Context section opens the sheet.** Immediately after the module
+   doc, a `/-! ## Context: the real thing -/` section shows what the toys
+   distill: the real structure(s) quoted verbatim from pinned history
+   (`git show <hash>^:<path>`, elisions marked), the review exchange where
+   the choice was debated (PR quotes, verbatim), the disputed field's real
+   consumers, and the evidence that the old API *knew* its costs — guarded
+   attributes (`@[simps val, simps -isSimp vars σ]` — the repair lemma
+   generated but kept out of the default simp set) and the refactor diff's
+   deleted workaround lines, per file. Prose may point forward to the
+   tests ("Test 1 below"); anything executable against them (the OldAPI
+   reprise, the live re-run) stays after the tests it re-runs. Context
+   goes first by standing user decision (question-log 2026-08-02, "Just
+   put the context first … I like it first"), overriding the earlier
+   cases-first placement; the evidence file's first bullet records the
+   override. The exemplars predate this rule and keep Context at the
+   bottom.
+2. **Distill minimal twins.** Strip the real structures to the fields that
    participate in the phenomenon (two fields sufficed for
    `GensF`/`GensP`; `σ'` and the algebra bookkeeping were elided *and the
    elision stated*). Name each twin with a pronounceable suffix
@@ -32,7 +51,7 @@ is questioned or amended, not to build a sheet.
    with a docstring opening with its style's caps label (`FIELD:` /
    `PARAM:` — plain, since bold is reserved for the separators), because
    hover shows docstrings out of context.
-2. **One shared construction** whose index type is interesting (`union` with
+3. **One shared construction** whose index type is interesting (`union` with
    `⊕`, mirroring the real `Algebra.Generators.comp`). In the losing style
    the interesting type sits in the *body*; in the winning style, in the
    *signature*. Then the equation lemmas — including the ones the losing
@@ -40,7 +59,7 @@ is questioned or amended, not to build a sheet.
    hand-written cross-type lemma per projection per construction), and the
    one the winning style *doesn't need* (its job done by the typechecker;
    prove it by showing the example elaborates).
-3. **Numbered tests as questions, chunked by style.** Each test header
+4. **Numbered tests as questions, chunked by style.** Each test header
    is a question ("can `simp` see `Sum.elim` through `.val`?"); inside it,
    bold separator blocks — `/-! **FIELD** -/` → `/-! **FIELD** escape
    hatches -/` (where any exist) → `/-! **PARAM** -/` — chunk the material
@@ -54,7 +73,7 @@ is questioned or amended, not to build a sheet.
    claim in plain English (flag deliberately trivial claims: "the content
    is not the claim but its shape"); each deliberate failure is labeled
    `EXPECTED ERROR: <verbatim compiler text>`.
-4. **Escape hatches, inline and honest.** Directly under each failure, the
+5. **Escape hatches, inline and honest.** Directly under each failure, the
    ways around it — each labeled with its price ("every fix hard-codes the
    body of `union` into the proof: the definition's abstraction boundary is
    gone"). An escape hatch must recover the tool under test; a workaround
@@ -62,25 +81,22 @@ is questioned or amended, not to build a sheet.
    as a labeled contrast case. If a rejected design's proof *works*, say so
    and rewrite the test to show the representative pain instead — never
    overstate.
-5. **Asymmetry probes.** The sharpest lines are the unstatable ones: show
+6. **Asymmetry probes.** The sharpest lines are the unstatable ones: show
    what each side literally cannot express (`#check @GensF.mk.injEq` forced
    into `HEq` vs honest `=`; the PARAM side has no `.ι` to even state
    `union_ι` about; the universe bump via `#check (GensF : Type → Type 1)`).
-6. **"The one thing the losing side does better."** Mandatory section. For
+7. **"The one thing the losing side does better."** Mandatory section. For
    field-style: plain existentials — and show the bridge that pays the cost
    once (`FGField ↔ FGParam` via `Finite.exists_equiv_fin`). A sheet without
    this section is advocacy.
-7. **The historical reconstruction.** A `namespace OldAPI` rebuilding the
-   real pre-refactor structure at demo scale from pinned history
-   (`git show <hash>^:<path>`, quoted verbatim, elisions marked), the real
-   construction (`comp`), and the tests reprised against it — failing on cue
-   with their historical names. Include the evidence that the old API *knew*:
-   its own guarded attributes (`@[simps val, simps -isSimp vars σ]` — the
-   repair lemma generated but kept out of the default simp set) and the
-   deleted workaround lines from the refactor's diff, per file.
-8. **The live re-run.** The same tests against the current post-refactor
+8. **The historical reconstruction.** A `namespace OldAPI` rebuilding at
+   demo scale the pre-refactor structure the opening Context section
+   already quotes (cite back, don't re-quote), the real construction
+   (`comp`), and the tests reprised against it — failing on cue with
+   their historical names.
+9. **The live re-run.** The same tests against the current post-refactor
    mathlib API and against your new definition, succeeding.
-9. **References dossier as the sheet's closing section**: a
+10. **References dossier as the sheet's closing section**: a
    `/-! ## References -/` block at the end of the file, not a separate
    `.md`. A companion `<sheet>_refs.md` was tried and reverted: rendered
    links did not pay for the second file a reader must keep alongside the

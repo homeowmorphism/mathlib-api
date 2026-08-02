@@ -9,15 +9,23 @@ citation must be quoted.
 
 The sheet is built to convince two audiences at once: a reader new to the
 design question, and an expert reviewer. Each format element below is the
-instantiation of a replicated finding (full citations in §Bibliography):
+instantiation of a replicated finding (full citations in §Bibliography);
+the first carries a recorded user override:
 
-- **Contrasting cases, before the prose.** Analyzing contrasting cases
+- **Contrasting cases, before the prose — Context-section position
+  overridden by user decision, 2026-08-02.** Analyzing contrasting cases
   prepares learners to understand a subsequent explanation far better than
-  reading the explanation first (Schwartz & Bransford 1998). Hence: the twin
-  structures and failing/succeeding examples come first; the prose thesis
-  ("PARAM's cost is in signatures, read once; FIELD's cost is in proofs,
-  fought continuously") is stated only after the reader has watched the
-  failures.
+  reading the explanation first (Schwartz & Bransford 1998). The format
+  originally sequenced the whole sheet this way: cases first, the
+  real-Mathlib Context section last. On 2026-08-02 the user set a standing
+  preference, mid-debate and after asking for the literature case ("Eh,
+  nevermind. Just put the context first in my Claude skill! I like it
+  first."), so the Context section now opens the sheet. That is a
+  reader-preference override, not a literature verdict; the finding stands
+  and still governs the sheet's body: failing/succeeding examples precede
+  each fix, and the prose thesis ("PARAM's cost is in signatures, read
+  once; FIELD's cost is in proofs, fought continuously") is stated only
+  after the reader has watched the failures.
 - **Side-by-side pairs, not sequential sections.** Explicitly comparing two
   cases induces a transferable schema; studying the same cases separately
   does not (Gentner, Loewenstein & Thompson 2003; Gick & Holyoak 1983 — one
