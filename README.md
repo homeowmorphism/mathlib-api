@@ -112,8 +112,8 @@ As a personal skill (available in all projects):
 git clone https://github.com/homeowmorphism/mathlib-api.git ~/.claude/skills/mathlib-api
 ```
 
-(If the GitHub repository still carries the old `mathlib-definition` name,
-that URL redirects once the repository is renamed on GitHub.)
+(The repository was renamed on GitHub 2026-08-02; the old
+`mathlib-definition` URL redirects.)
 
 As a project skill, clone into `.claude/skills/mathlib-api` inside the
 project instead. Claude Code discovers the skill from the `SKILL.md`
