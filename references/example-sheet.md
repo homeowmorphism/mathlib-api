@@ -37,8 +37,8 @@ is questioned or amended, not to build a sheet.
    goes first by standing user decision (question-log 2026-08-02, "Just
    put the context first … I like it first"), overriding the earlier
    cases-first placement; the evidence file's first bullet records the
-   override. The exemplars predate this rule and keep Context at the
-   bottom.
+   override. Both full-genre exemplars were migrated to this order on
+   2026-08-02; the lighter-genre exemplar has no Context section.
 2. **Distill minimal twins.** Strip the real structures to the fields that
    participate in the phenomenon (two fields sufficed for
    `GensF`/`GensP`; `σ'` and the algebra bookkeeping were elided *and the
