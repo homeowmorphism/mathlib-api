@@ -10,6 +10,7 @@ authors:
   - family-names: Su
     given-names: Hang Lu
     alias: homeowmorphism
+    orcid: "https://orcid.org/0009-0009-8050-4164"
 abstract: >-
   A Claude Code skill for designing definitions, and the API around them,
   intended for Mathlib. It excavates the precedent already sitting in
