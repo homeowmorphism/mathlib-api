@@ -135,6 +135,24 @@ is questioned or amended, not to build a sheet.
   overwhelming to read"). Section headers become questions. For the
   sentences, apply the `human-prose` skill (one idea per sentence; no
   mid-sentence asides; active voice; given before new; no decorative
-  emphasis). That skill is the canonical home of the rule set and its
-  evidence; on this sheet, the caps labels and the bold separators are
-  the only sanctioned emphasis cues.
+  emphasis; name the referent). That skill is the canonical home of the
+  rule set and its evidence; on this sheet, the caps labels and the bold
+  separators are the only sanctioned emphasis cues.
+- **Verdict blocks take the pass first.** A "why it matters" block states
+  the conclusion a test is evidence for, and it is where register
+  complaints land: "Wtf does this mean?" (question-log 2026-08-02, on a
+  seven-line block that the pass had already run over). Three rules on top
+  of `human-prose`. The verdict is the block's first sentence, in plain
+  subject-verb-object form. Each supporting claim gets its own sentence and
+  its own check — the grep command, the quoted fields, the line number in
+  this file where the reader can see it. Each abstract cost noun ("price",
+  "discipline", "liveable") is replaced by the artifact that realizes it.
+  The contrast, verbatim from `scratch_section_vs_none.lean` before and
+  after that complaint:
+
+      before: "presentation-independence is phrased through `Hom`s
+        instead, and `Hom` imposes *no* compatibility with σ … That
+        discipline is what makes the bundled section liveable."
+      after:  "That map is `Hom`, and it constrains only the generating
+        family … σ is absent. … So the bundled σ costs nothing here: the
+        bill exists, but nothing in mathlib ever sends it."

@@ -83,6 +83,19 @@ the standalone `human-prose` skill so any skill can apply them. That
 skill is now the canonical home of the rules and their bibliography;
 the readability pass in `example-sheet.md` points there.
 
+One failure survived that pass. On 2026-08-02 a seven-line "why it
+matters" block in `scratch_section_vs_none.lean` drew "Wtf does this
+mean? Restate in human language please." Four claims sat in three
+em-dash-chained sentences, and the load-bearing words were abstract nouns
+whose referents lived elsewhere in the file ("presentation-independence",
+"that discipline", "liveable", "this test's price"). Two fixes followed:
+`human-prose` gained rule 7 (name the referent), and `example-sheet.md`
+gained the verdict-block contract, which puts conclusion-stating blocks
+first in the pass and requires a check per claim. The diagnosis to keep:
+verdict blocks are written last, carry the sheet's whole argument in
+compressed form, and are the prose most likely to be skipped by a pass
+aimed at test commentary.
+
 ## Bibliography (verified 2026-07-31; one-line findings faithful to the papers)
 
 - Schwartz, D. L., & Bransford, J. D. (1998). A time for telling.
