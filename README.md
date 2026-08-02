@@ -175,4 +175,6 @@ purpose, with an explicit patent grant. Keep [LICENSE.md](LICENSE.md) and
 
 ## Special thanks
 
-Thank you Chris Birbeck for giving me the idea of making this workflow into a Claude skill. Thank you to everyone on the Formal Landmarks project at Imperial for inspiring me to do better as a mathlib contributor. 
+Thank you Chris Birbeck for giving me the idea of making this workflow into a Claude skill. 
+
+Thank you to everyone on the Formal Landmarks project at Imperial for inspiring me to be a better mathlib contributor. 
