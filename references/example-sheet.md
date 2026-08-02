@@ -1,12 +1,15 @@
 # The example sheet — recipe and contracts
 
-The dossier's argument, compiled. One `.lean` file a reader can open in the
-IDE and *watch* the designs succeed and fail, plus a companion markdown
-references file. Exemplar: `scratch_field_vs_parameter.lean` with its
-dossier `scratch_field_vs_parameter_refs.md` (`Group.Presentation` project
-root); a second, smaller instance of the genre is
+The dossier's argument, compiled. One self-contained `.lean` file a reader
+can open in the IDE and *watch* the designs succeed and fail, ending with
+the references dossier as a `/-! ## References -/` section. Exemplar:
+`scratch_field_vs_parameter.lean` (`Group.Presentation` project root); a
+second, smaller instance of the genre is
 `Mathlib/RingTheory/Extension/scratch.lean` there (checked `Option ℕ` vs
 truncated `ℕ` subtraction — junk values made visible with paired `#eval`s).
+For a contested API choice there is a lighter variant of this genre — no
+historical reconstruction, local `path:line` pins only — specified in
+`api-surface.md` §5; its exemplar is `scratch_closure_vs_lift.lean`.
 
 Every element of the format instantiates a replicated learning-science
 finding (contrasting cases, analogical encoding, variation theory,
@@ -77,16 +80,17 @@ is questioned or amended, not to build a sheet.
    deleted workaround lines from the refactor's diff, per file.
 8. **The live re-run.** The same tests against the current post-refactor
    mathlib API and against your new definition, succeeding.
-9. **References dossier as a companion `.md` file** (`<sheet>_refs.md`, same
-   directory), not a doc-comment in the sheet: inside `/-! -/` a citation
-   database gets no rendering — no clickable links, no headers — and as
-   markdown it distills directly into the PR description. Organized to
-   mirror the argument (refactor trail → winning-style structures →
-   existential layer → holdouts with their costs → related predicates),
-   every entry with `path:line`, commit hash, PR URL; quotes verbatim and
-   pre-verified. The sheet ends with a short `/-! ## References -/` section
-   pointing at the file and saying why it is markdown; the `.md` opens by
-   pointing back at the sheet.
+9. **References dossier as the sheet's closing section**: a
+   `/-! ## References -/` block at the end of the file, not a separate
+   `.md`. A companion `<sheet>_refs.md` was tried and reverted: rendered
+   links did not pay for the second file a reader must keep alongside the
+   sheet (user decision, 2026-08-02). Organized to mirror the argument
+   (refactor trail → winning-style structures → existential layer →
+   holdouts with their costs → related predicates), every entry with
+   `path:line`, commit hash, PR URL; quotes verbatim and pre-verified.
+   Markdown link syntax stays; it reads fine in source and lifts wholesale
+   into the PR description. Lean block comments nest, so the section text
+   must contain no `/-` or `-/` sequences.
 
 ## Contracts
 

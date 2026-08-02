@@ -34,6 +34,12 @@ precedent into one of four buckets:
    `IsCoxeterGroup`, `Algebra.FinitePresentation`) — universe-pinned
    `∃ ι : Type u` or `Fin n`-normalized.
 
+When the deliverable includes an API surface, record for each shape-mate
+not just how it is *declared* but what it *ships*: classify its companion
+declarations into the surface categories of `api-surface.md` §1, note
+attribute discipline verbatim (`@[simp]`, `@[simps]`, `-isSimp` guards),
+and treat a standard category a shape-mate lacks as a finding in itself.
+
 The case-study sweep that produced this taxonomy fanned out four parallel
 searchers (linear/commutative algebra; group theory; an open grep for
 `Type`-valued fields; git archaeology for bundling refactors) and then

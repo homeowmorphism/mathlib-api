@@ -1,44 +1,53 @@
 ---
-name: mathlib-definition
-description: Evidence-driven workflow for designing a good Mathlib definition. Use when adding a new structure/def intended for mathlib, choosing between design alternatives (index type as field vs parameter, Set vs indexed family, data vs Prop, instance vs hypothesis, existential shape), justifying a design in PR review, or when asked to "check the precedents" for a definition or to build a field-vs-parameter-style example sheet. Clarifying and follow-up questions about a design explanation are answered via the companion adaptive-teacher skill.
+name: mathlib-api
+description: Evidence-driven workflow for designing a Mathlib definition and the API around it. Use when adding a new structure/def intended for mathlib; when choosing between design alternatives (index type as field vs parameter, Set vs indexed family, data vs Prop, instance vs hypothesis, existential shape); when deciding which statements an API should ship and in what form (which Prop is the field, iff vs directional corollaries, simp orientation, smart constructors, bridges to existing idioms, bloat audits); when justifying a design in PR review; or when asked to "check the precedents" for a definition or an API, or to build a contrasting-cases example sheet. Clarifying and follow-up questions about a design explanation are answered via the companion adaptive-teacher skill.
 ---
 
-# Designing a Mathlib definition
+# Designing a Mathlib definition and its API
 
 A mathlib definition is an interface contract paid for by every future
-user. The core insight of this workflow: **mathlib has already run the
-experiment for most design choices** — in its git history, its PR reviews,
-and its Zulip threads. Excavate that experiment instead of re-arguing it
-from first principles; then *demonstrate* the result with compiling code,
-not prose.
+user, and the API around it is the rest of that contract: the statements
+every consumer will actually call. The core insight of this workflow:
+**mathlib has already run the experiment for most design choices** — in
+its git history, its PR reviews, and its Zulip threads. Excavate that
+experiment instead of re-arguing it from first principles; then
+*demonstrate* the result with compiling code, not prose.
 
 Load each reference file when its phase begins — nothing else up front.
 (Workflow distilled from the `Group.Generators` / `Group.Presentation`
-design project, 2026-07; exemplar artifact:
-`scratch_field_vs_parameter.lean` in that project root.)
+design project, 2026-07; exemplar artifacts in that project root:
+`scratch_field_vs_parameter.lean` for a definition axis,
+`scratch_closure_vs_lift.lean` for an API axis.)
 
 ## Outputs, in order
 
 1. **A precedent dossier** — chat summary (durable conclusions also go to a
    memory note) of what mathlib tried, what it refactored to, and why,
    every claim pinned to a PR URL, commit hash, `path:line`, or Zulip
-   message.
+   message. Covers both the structure shape and the surface its
+   shape-mates ship.
 2. **The definition itself**, each field's form chosen by the API that will
    consume it ("the verb decides the container").
-3. **An example sheet** — one compiling contrasting-cases `.lean` file in
+3. **The API surface** — each statement admitted with its consumer named,
+   stated in the form the consumer demands, attributed (`@[simp]`,
+   `@[ext]`, `@[simps]`) deliberately, and audited against bloat.
+4. **An example sheet** — one compiling contrasting-cases `.lean` file in
    which the reader *watches* each rejected design fail and each chosen
-   design succeed, plus a companion `<sheet>_refs.md` holding the references
-   dossier (markdown so links render and it distills into the PR
-   description).
+   design succeed. Two genres: the full sheet with historical
+   reconstruction and a closing `/-! ## References -/` dossier section,
+   and the lighter API-scratch genre when the precedent is shape-level
+   and all pins are local.
 
 ## Phase 0 — Name the consumers
 
-Before any design choice, write down, for each candidate field, the
-downstream API that will consume it (`FreeGroup.lift` wants `α → G`;
-`Subgroup.normalClosure` and `PresentedGroup` want `Set (FreeGroup α)`;
-instance search wants class arguments on *parameters*). Every later
-decision asks what form the consumer demands — "the header is a contract;
-make it speak the caller's language" — never symmetry or aesthetics.
+Before any design choice, write down the downstream API that will consume
+each candidate — for each *field* of the structure (`FreeGroup.lift` wants
+`α → G`; `Subgroup.normalClosure` and `PresentedGroup` want
+`Set (FreeGroup α)`; instance search wants class arguments on
+*parameters*), and for each candidate *statement* the argument slot or
+proof site that will call it. Every later decision asks what form the
+consumer demands — "the header is a contract; make it speak the caller's
+language" — never symmetry or aesthetics.
 
 ## Phase 1 — Precedent excavation
 
@@ -50,10 +59,12 @@ are design evidence); Zulip via the spectator JSON API (web search does
 not index recent Zulip); the direction-of-travel count including failed
 reverse experiments; cost accounting of holdouts; and adversarial
 verification of every claimed precedent against source — in the case study
-3 of 49 claims died there. Deliver the dossier as a chat summary before
-touching the definition.
+3 of 49 claims died there. When the deliverable includes an API surface,
+survey what the shape-mates *ship*, not just how they are declared — the
+surface taxonomy to survey against is `references/api-surface.md` §1.
+Deliver the dossier as a chat summary before touching the definition.
 
-## Phase 2 — Decide each axis, then stress-test
+## Phase 2 — Decide each definition axis, then stress-test
 
 Work the checklist in `references/design-axes.md`; for each axis record
 the alternatives, the consumer-driven argument, the precedent, and the
@@ -71,7 +82,21 @@ analysis. Then stress-test before committing:
 - **Regression check**: "Is any consumer made worse off?" A change is safe
   when the old form is recoverable by a total conversion at the use site.
 
-## Phase 3 — The example sheet
+## Phase 3 — Build the API surface
+
+Follow `references/api-surface.md`: the standard surface a bundled-data
+structure ships (constructors, projection lemmas, ext, transport,
+bridges, the existential layer); the per-statement admission tests (a
+named consumer, a precedent-standard slot, or a conversion paid once in
+the API — otherwise it stays out); statement form (index type over image
+set, one simp-normal form, iff vs directional corollaries, weakest
+assumptions); and the driver test — prove the downstream targets using
+only the proposed API; friction names a missing lemma, and a lemma no
+driver uses is a bloat candidate. The same stress-test discipline as
+Phase 2 applies: simulate contested statement shapes in scratch before
+committing to one.
+
+## Phase 4 — The example sheet
 
 Follow `references/example-sheet.md` (the recipe and the compile/citation
 contracts; the learning-science grounding behind the format is split into
@@ -81,9 +106,11 @@ in exactly one design choice, numbered tests chunked per caps-labeled
 style, deliberate failures at labeled `EXPECTED ERROR` examples with
 verbatim compiler text, escape hatches priced honestly, the real
 pre-refactor API reconstructed from pinned git history, and the references
-dossier split out as a companion `.md` file mirroring the argument.
+dossier as the sheet's closing section, mirroring the argument. For a
+contested API choice, the lighter genre in `references/api-surface.md` §5
+usually suffices — same contracts, no historical reconstruction.
 
-## Phase 4 — The PR justification
+## Phase 5 — The PR justification
 
 - Citation order: same-subject-area precedent first (for
   `Group.Generators`: #7698, whose commit message makes the
