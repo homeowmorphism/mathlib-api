@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+title: >-
+  mathlib-api: a Claude Code skill for designing Mathlib definitions and
+  their API
+message: >-
+  If you use this skill, or a design workflow derived from it, please cite
+  it.
+type: software
+authors:
+  - family-names: Su
+    given-names: Hang Lu
+    alias: homeowmorphism
+abstract: >-
+  A Claude Code skill for designing definitions, and the API around them,
+  intended for Mathlib. It excavates the precedent already sitting in
+  Mathlib's git history, PR reviews, and Zulip threads, then demonstrates the
+  result in compiling Lean code rather than asserting it in prose. Outputs a
+  precedent dossier, the definition, the API surface, a contrasting-cases
+  example sheet, and a PR justification.
+keywords:
+  - claude-code
+  - agent-skill
+  - lean4
+  - mathlib
+  - api-design
+  - formalization
+license: Apache-2.0
+url: "https://github.com/homeowmorphism/mathlib-api"
+repository-code: "https://github.com/homeowmorphism/mathlib-api"
