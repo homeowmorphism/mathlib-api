@@ -172,3 +172,7 @@ text:
 [Apache License 2.0](LICENSE.md): free to use, modify, and share, for any
 purpose, with an explicit patent grant. Keep [LICENSE.md](LICENSE.md) and
 [NOTICE](NOTICE) with any redistribution.
+
+## Special thanks
+
+Thank you Chris Birbeck for giving me the idea of making this workflow into a Claude skill. Thank you to everyone on the Formal Landmarks project at Imperial for inspiring me to do better as a mathlib contributor. 
