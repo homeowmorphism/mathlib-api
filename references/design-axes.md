@@ -6,6 +6,37 @@ flip side. Case-study citations refer to the `Group.Generators` /
 `Group.Presentation` project (branch `Presentation`, commits
 `b48a9df7117..07f73f4be5c`) and to upstream mathlib PRs.
 
+## 0. Recording a verdict
+
+Every axis below ends in a verdict, and the record says which of three
+kinds it is. Making the kind visible is the job. Winning the argument is
+not.
+
+- **Mechanism.** Something breaks on one side and the sheet shows it: a
+  `rw` that dies, an instance search that fails, an `HEq` where the other
+  side gets `=`. §2 is this kind. Name the artifact and where it fails.
+- **Counts.** Nothing breaks either way, and one shape matches more of
+  the library. Give each count as its command and its output, including
+  the count that would favour the other side. A reader who weighs those
+  numbers differently reaches a different verdict from the same evidence.
+  That is a legitimate reading, and the record should let them get there.
+- **Judgment.** The evidence does not separate the alternatives. Say so
+  in the verdict's first sentence, give both sides, and stop. Do not
+  settle it with a tiebreaker invented for the occasion.
+
+Two checks before recording a verdict of the first two kinds:
+
+- **Try to erase the asymmetry.** When one side looks worse only because
+  of a line the other side does not have to write, write that line and
+  see whether the difference survives. `scratch_closure_vs_lift.lean`
+  claimed a LIFT-style structure needed two helper lemmas against
+  CLOSURE's one. Challenged 2026-08-03, the claim did not survive:
+  `⟨f, FreeGroup.closure_range_eq_top_iff_surjective_lift.mp h⟩` compiles
+  with no helper, `.val = f` is still `rfl`, and the mirrored line
+  compiles on the CLOSURE side. The asymmetry was two names.
+- **Count what the library must contain, not what a design chooses to
+  name.** A helper anyone can inline is not a cost.
+
 ## 1. Structure vs class
 
 Data that a carrier can have *many of* (generating families, bases,
@@ -61,14 +92,34 @@ ext-lemma doesn't apply automatically … the lemma search wouldn't know which
 
 ## 3. Which Prop witnesses the defining property
 
-When several equivalent Props could be the field, pick the one that is
-**elementary and self-contained** in the ambient theory, and derive the rest.
-Case study: `closure_eq_top : Subgroup.closure (Set.range val) = ⊤` beat
-`lift_surjective : Function.Surjective (FreeGroup.lift val)` as the field —
-it mentions only subgroups of `G` (never `FreeGroup`) and matches the
-`Subgroup.closure … = ⊤` idiom of `Group.FG`. The other form survives as a
-derived lemma plus a smart constructor (`ofLiftSurjective`) for callers
-arriving from the other direction (commit `9dc97a82a0c`).
+Verdict kind: counts (§0). When several equivalent Props could be the
+field, prefer the one that is **elementary and self-contained** in the
+ambient theory, and derive the rest.
+
+Case study: the field is
+`closure_eq_top : Subgroup.closure (Set.range val) = ⊤` and not
+`lift_surjective : Function.Surjective (FreeGroup.lift val)`. It mentions
+only subgroups of `G`, never `FreeGroup`, and it is the form mathlib
+already states. Two one-line regexes, so two floors, re-run 2026-08-03:
+
+    grep -rE "theorem .*closure.*= ⊤|lemma .*closure.*= ⊤" Mathlib --include="*.lean" | wc -l
+    51
+    grep -rE "\(h[a-zA-Z]* : (Subgroup\.)?closure [^)]*= ⊤\)" Mathlib --include="*.lean" | wc -l
+    29
+
+The surjectivity analogues of both patterns return nothing upstream. But
+mathlib does state generation as a surjection twice, quantifying over an
+unnamed `φ` where no regex above can see it:
+`Group.fg_iff_exists_freeGroup_hom_surjective` and its `_finite` variant,
+`Mathlib/GroupTheory/Finiteness.lean:473`, `:484`.
+
+What the counts do not say: neither field is harder to use than the
+other. Both convert in one application of
+`FreeGroup.closure_range_eq_top_iff_surjective_lift`, at whichever sites
+hold the fact in the other shape, and each side pays it in the tests
+where the other does not. `Group.Generators` ships the derived lemma
+`lift_surjective` and no constructor; the `Presentation` branch also
+carried `ofLiftSurjective`, added in `9dc97a82a0c` and absent here.
 
 ## 4. Data vs Prop fields
 

@@ -141,19 +141,26 @@ is questioned or amended, not to build a sheet.
     above came from a pattern that cannot match
     `∃ (φ : FreeGroup α →* G), Function.Surjective φ`, and mathlib states
     generation that way twice.
-  - **Test the asymmetry before claiming it.** If the winning side's
-    argument is "the API pays the conversion once", check whether the
-    losing side can ship a smart constructor and pay once too. Usually it
-    can. Put that demonstration in the sheet as its own section.
-  - **Then count bridges, not sites.** Count each shape twice: how many
-    library theorems *conclude* it, and how many library lemmas *take it
-    as a hypothesis*. A shape that appears on both sides needs one bridge
-    lemma; a shape that appears on neither needs two. That ratio is the
-    defensible asymmetry. In `scratch_closure_vs_lift.lean` it came out
-    one versus two, after the sheet had claimed zero versus forever and
-    then overcorrected to one versus one. The demand count is the one
-    that gets forgotten:
+  - **Try to erase the asymmetry before claiming it.** Write the line the
+    losing side is missing and see whether the difference survives. It
+    usually does not. `scratch_closure_vs_lift.lean` argued that a
+    LIFT-style structure needs two helper lemmas where CLOSURE needs one;
+    in fact `⟨f, FreeGroup.closure_range_eq_top_iff_surjective_lift.mp h⟩`
+    compiles with no helper at all, `.val = f` is still `rfl`, and the
+    mirrored line compiles on the CLOSURE side. Both helpers were `.mp`
+    and `.mpr` of one library iff. Run the erasure in scratch, and if it
+    works, the claim comes out of the sheet.
+  - **Count library statements, not helper names.** Count each shape
+    twice: how many library theorems *conclude* it, and how many library
+    lemmas *take it as a hypothesis*. Those two numbers are the argument.
+    Helper counts are not, because any design can inline the conversion,
+    so a tally of names an author chose to write manufactures an
+    asymmetry that no user of the API ever meets. The demand count is the
+    one that gets forgotten:
     `grep -rE "\(h[a-zA-Z]* : (Subgroup\.)?closure [^)]*= ⊤\)" Mathlib --include="*.lean" | wc -l`.
+    That sheet ran through "zero versus forever", "one versus one", and
+    "one versus two" before the helpers turned out to be optional on both
+    sides.
   - **An EXPECTED ERROR must fail for a reason the design causes.**
     Handing a proof of one twin's field to the other twin's slot is a
     type mismatch. It happens in both directions whichever design is
@@ -217,6 +224,21 @@ is questioned or amended, not to build a sheet.
         family … σ is absent. … So the bundled σ costs nothing here: the
         bill exists, but nothing in mathlib ever sends it."
 
+- **Verdict blocks name their kind, and are allowed to end in a tie.**
+  The three kinds are mechanism, counts, and judgment
+  (`design-axes.md` §0). Rules on top of that:
+  - When every test compiles and the two designs differ by one lemma
+    application, the verdict's first sentence says the tests do not
+    separate the designs. The counts, if there are any, follow as a
+    separate claim the reader can weigh. They do not get promoted into a
+    conclusion the tests did not reach.
+  - No `wins`, `beats`, `loses`, or `the verdict is`. Write what each
+    side asks the user to type and let the numbers sit next to it.
+    `scratch_closure_vs_lift.lean` had a section titled "the test LIFT
+    wins"; the section is fine, the title was a thumb on the scale.
+  - The sheet reports. It does not recommend. Offer a preference only
+    when the user asks for one, in one sentence, marked as a preference
+    and placed after the evidence.
 - **No house vocabulary.** The design-argument words are the second
   register failure, logged 2026-08-03 on `scratch_closure_vs_lift.lean`,
   where a paragraph built from "smart constructor", "construction sites",

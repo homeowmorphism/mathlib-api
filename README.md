@@ -68,6 +68,13 @@ rejected); demonstrations must be honest (never overstate a failure); the
 example sheet compiles with exactly the intended deliberate errors and zero
 warnings.
 
+The output is a report, not a case. Every verdict names its kind —
+something breaks, the counts lean one way, or it is a judgment call — and
+a judgment call is labeled as one rather than settled by a tiebreaker
+invented for the occasion. Before any asymmetry is claimed, the workflow
+tries to erase it by writing the line the other side is missing.
+Recommendations appear only when asked for, marked as preference.
+
 ## Repository layout
 
 Each reference file is loaded when its phase begins, not up front; the

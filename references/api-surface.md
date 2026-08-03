@@ -88,16 +88,23 @@ which:
    legitimizes lemmas with no consumer *yet* — the case study's
    `presentedGroupEquiv_of` had zero checkout consumers but fills the
    slot `Basis.coe_mk` fills. Flag such admissions explicitly.
-3. **A conversion paid once.** A bridge belongs when it moves a rewrite
-   from every use site into one lemma. Count both sides before deciding
-   where the payment goes: construction sites are open-ended (every
-   future user arriving with a library fact), consumption sites are a
-   closed list inside your own API. In the case study the supply count
-   was 51 closure-shaped theorems against 0 lift-shaped (grep commands
-   quoted in `scratch_closure_vs_lift.lean`'s References section), and
-   the sheet's closing asymmetry note gives the verdict: "A conversion
-   paid once in the API beats the same conversion paid at every
-   construction site forever."
+3. **A conversion moved out of every use site.** A bridge belongs when it
+   replaces a rewrite the user would otherwise write, and only when that
+   rewrite is more than one application of an existing iff. The case
+   study keeps `Group.Generators.lift_surjective`
+   (`Mathlib/GroupTheory/Generators.lean:70`) because it is one line with
+   a consumer eleven lines below it, and ships no constructor in the
+   reverse direction, because
+   `⟨f, FreeGroup.closure_range_eq_top_iff_surjective_lift.mp h⟩` already
+   is the conversion.
+
+   An earlier version of this test read "51 closure-shaped theorems
+   against 0 lift-shaped" and quoted the sheet concluding that a
+   conversion paid once beats the same conversion paid forever. The 0 was
+   a regex artifact (`example-sheet.md`, honesty contract), and neither
+   design pays more than one application. What those counts bear on is
+   which statement to make the *field* (`design-axes.md` §3), not which
+   bridges to ship.
 
 Standing rejections:
 

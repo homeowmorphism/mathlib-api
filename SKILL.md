@@ -67,9 +67,11 @@ Deliver the dossier as a chat summary before touching the definition.
 ## Phase 2 — Decide each definition axis, then stress-test
 
 Work the checklist in `references/design-axes.md`; for each axis record
-the alternatives, the consumer-driven argument, the precedent, and the
-*honest flip side* — a dossier with no flip sides is advocacy, not
-analysis. Then stress-test before committing:
+the alternatives, the consumer-driven argument, the precedent, the
+*honest flip side*, and the verdict's kind (§0) — a dossier with no flip
+sides is advocacy, not analysis, and one that hides a close call behind a
+confident verdict is worse, because it looks like analysis. Then
+stress-test before committing:
 
 - **Simulate variants in scratch**, never in the repo — build the
   alternative live (`lean_run_code`, or a scratch file in the project root
@@ -118,6 +120,10 @@ usually suffices — same contracts, no historical reconstruction.
   #37928), Zulip authority third (the 2021 "Bundled basis" thread),
   performance numbers fourth.
 - Link the example sheet as evidence a reviewer can run.
+- Where the axis was a judgment call, the PR says it was one and gives
+  the alternative. A reviewer who reopens it is then reopening a question
+  the PR already admitted was open, which is cheaper than discovering
+  that the confident paragraph was covering a coin flip.
 - Keep the PR minimal: one statement shape per PR, general lemmas
   upstreamed to their natural home file in a separate prerequisite PR, no
   riders.
@@ -144,6 +150,14 @@ commit, citing the log entry date.
   misleading; reject misleading forms even when technically correct. Never
   overstate a failure — if a rejected design's proof happens to work, say
   so and rewrite the test to show the real pain.
+- **Report, don't advocate.** Every verdict names its kind — mechanism, a
+  count, or a judgment call (`references/design-axes.md` §0). A judgment
+  call says so in its first sentence and stops there; it is not settled
+  by a tiebreaker invented for the occasion, and "the evidence does not
+  separate these" is a complete answer. Before claiming any asymmetry,
+  try to erase it by writing the line the other side is missing. Give a
+  recommendation only when asked, in one sentence, marked as a
+  preference and placed after the evidence.
 - **Demonstrations must be honest.** An escape hatch must recover the tool
   under test; a workaround that sidesteps the tool stays only if labeled
   as a contrast case.
