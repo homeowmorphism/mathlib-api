@@ -191,15 +191,19 @@ root). Deltas from the full recipe:
   there is no historical refactor to reconstruct; the precedent is
   shape-level" (its References section).
 - **Local pins suffice.** With no refactor history, the closing
-  `/-! ## References -/` section carries plain `path:line` pins and
-  grep-count evidence (the 51-to-0 supply count, command quoted) instead
-  of commit-pinned `git show` quotes.
+  `/-! ## References -/` section carries plain `path:line` pins and grep
+  counts instead of commit-pinned `git show` quotes. Report each count as
+  the command and its output, and run the pattern that would find the
+  counterexamples too. The exemplar originally reported its supply as
+  "51 to 0". That was an artifact of a regex that cannot match mathlib's
+  `∃ (φ : FreeGroup α →* G), Function.Surjective φ` statements, and
+  mathlib has two of them.
 - **Everything else carries over** from `example-sheet.md`: twins with
   pronounceable style suffixes, numbered tests phrased as questions,
   `Says:` lines, labeled `EXPECTED ERROR`s with verbatim compiler text,
   escape hatches priced honestly, the mandatory "one thing the losing
-  side does better" section, the compile and citation contracts, and the
-  readability pass.
+  side does better" section, the limitations section, the honesty,
+  compile and citation contracts, and the readability pass.
 
 Escalate back to the full genre when the axis *does* have a refactor
 history — then the historical reconstruction and the companion references

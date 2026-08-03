@@ -18,9 +18,9 @@ the first carries a recorded user override:
   reading the explanation first (Schwartz & Bransford 1998). The format
   originally sequenced the whole sheet this way: cases first, the
   real-Mathlib Context section last. On 2026-08-02 the user set a standing
-  preference, mid-debate and after asking for the literature case ("Eh,
-  nevermind. Just put the context first in my Claude skill! I like it
-  first."), so the Context section now opens the sheet. That is a
+  preference, mid-debate and after asking for the literature case: put the
+  context first, as a matter of taste. The Context section now opens the
+  sheet. That is a
   reader-preference override, not a literature verdict; the finding stands
   and still governs the sheet's body: failing/succeeding examples precede
   each fix, and the prose thesis ("PARAM's cost is in signatures, read
@@ -77,15 +77,15 @@ an education journal.
 ## Prose readability (sentence level)
 
 The rules above govern the sheet's structure. The sentence-level rules
-were added here 2026-08-01, after user feedback that the prose was "so
-LLM-y that they are overwhelming to read", and moved the same day to
+were added here 2026-08-01, after the prose was reported as
+machine-written and overwhelming to read, and moved the same day to
 the standalone `human-prose` skill so any skill can apply them. That
 skill is now the canonical home of the rules and their bibliography;
 the readability pass in `example-sheet.md` points there.
 
 One failure survived that pass. On 2026-08-02 a seven-line "why it
-matters" block in `scratch_section_vs_none.lean` drew "Wtf does this
-mean? Restate in human language please." Four claims sat in three
+matters" block in `scratch_section_vs_none.lean` was reported as
+unintelligible, with a request to restate it plainly. Four claims sat in three
 em-dash-chained sentences, and the load-bearing words were abstract nouns
 whose referents lived elsewhere in the file ("presentation-independence",
 "that discipline", "liveable", "this test's price"). Two fixes followed:
