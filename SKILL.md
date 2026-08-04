@@ -161,6 +161,12 @@ commit, citing the log entry date.
 - **Demonstrations must be honest.** An escape hatch must recover the tool
   under test; a workaround that sidesteps the tool stays only if labeled
   as a contrast case.
+- **Scratch files stay unstaged.** Every scratch/example-sheet `.lean` file the
+  workflow produces (project-root `scratch*.lean`, the `scratch_*.lean` twins,
+  the example sheet itself) is left as an unstaged working-tree change — never
+  `git add`ed into the mathlib commit. They are local evidence you keep running
+  in the IDE, not part of the PR; leave them out of the staging area so the
+  contribution stays minimal.
 - **Comment style**: all free commentary in `/- ... -/` blocks (docstrings
   `/-- -/`, module docs `/-! -/`); never `--` line comments.
 - **Compile contract**: an example sheet compiles with *exactly* the
